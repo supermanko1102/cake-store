@@ -1,0 +1,26 @@
+{
+  "account": {
+    "contacts": "通訊錄",
+    "delegates": "代表",
+    "identity": "身份",
+    "profile": "帳戶設置",
+    "security": "安全性",
+    "subscription": "帳單與訂閱"
+  },
+  "auth": {
+    "authProxy": "代理",
+    "forgot": "忘記密碼",
+    "login": "登入",
+    "reset": "重設密碼",
+    "signUp": "註冊"
+  },
+  "belongings": "財產",
+  "collectables": "收藏品",
+  "dashboard": "儀表板",
+  "documents": "文件",
+  "finance": "金融",
+  "groups": "群組",
+  "properties": "物業",
+  "setup": "設定",
+  "wishlist": "願望清單"
+}
