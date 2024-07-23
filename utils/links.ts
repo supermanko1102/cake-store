@@ -4,17 +4,17 @@ type NavLink = {
 };
 
 export const links: NavLink[] = [
-  { href: "/", label: "home" },
-  { href: "/about", label: "about" },
-  { href: "/products", label: "products" },
-  { href: "/favorites", label: "favorites" },
-  { href: "/cart", label: "cart" },
-  { href: "/orders", label: "orders" },
+  { href: "/", label: "首頁" },
+  { href: "/about", label: "關於" },
+  { href: "/products", label: "產品" },
+  { href: "/favorites", label: "最愛" },
+  { href: "/cart", label: "購物車" },
+  { href: "/orders", label: "訂單" },
   { href: "/admin/sales", label: "儀表板" },
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "sales" },
-  { href: "/admin/products", label: "my products" },
-  { href: "/admin/products/create", label: "create product" },
+  { href: "/admin/sales", label: "銷售" },
+  { href: "/admin/products", label: "產品" },
+  { href: "/admin/products/create", label: "建立產品" },
 ];
