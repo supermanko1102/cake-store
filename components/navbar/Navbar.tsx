@@ -18,7 +18,7 @@ function Navbar() {
         <div className="flex gap-4 items-center ">
           <CartButton />
           <DarkMode />
-          <Translate />
+          {/* <Translate /> */}
           <LinksDropdown />
         </div>
       </Container>

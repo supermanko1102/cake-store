@@ -6,7 +6,7 @@ import { Icon } from "@radix-ui/react-select";
 function Logo() {
   return (
     <Button size="icon" asChild>
-      <Link href="./">
+      <Link href="/">
         <SiPronounsdotpage className="w-6 h-6" />
       </Link>
     </Button>

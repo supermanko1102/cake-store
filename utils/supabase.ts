@@ -21,3 +21,9 @@ export const uploadImage = async (image: File) => {
   if (!data) throw new Error("圖片上傳失敗");
   return supabase.storage.from(bucket).getPublicUrl(newName).data.publicUrl;
 };
+
+export const deleteImage = (url: string) => {
+  const imageName = url.split("/").pop();
+  if (!imageName) throw new Error("無效的URL");
+  return supabase.storage.from(bucket).remove([imageName]);
+};
