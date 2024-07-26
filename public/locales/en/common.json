@@ -9,10 +9,24 @@
     "about": "about",
     "cart": "cart"
   },
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "orders": "Orders",
+    "dashboard": "Dashboard"
+  },
+  "adCommon": {
+    "sales": "sales",
+    "products": "products",
+    "createProduct": "createProduct"
+  },
   "account": {
-    "login": "Login",
-    "logout": "Logout",
-    "register": "Register"
+    "login": "Log In",
+    "register": "Sign Up",
+    "signOut": "Sign Out"
   },
   "products": {
     "title": "title",
@@ -31,5 +45,10 @@
     "toggle": "toggle",
     "english": "English",
     "chinese": "中文"
+  },
+  "NotFound": {
+    "title": "頁面未找到",
+    "description": "抱歉，我們無法找到您請求的頁面。",
+    "backHome": "返回首頁"
   }
 }

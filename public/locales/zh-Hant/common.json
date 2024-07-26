@@ -31,5 +31,24 @@
     "toggle": "切換語言",
     "english": "English",
     "chinese": "中文"
+  },
+  "NotFound": {
+    "title": "頁面未找到",
+    "description": "抱歉，我們無法找到您請求的頁面。",
+    "backHome": "返回首頁"
+  },
+  "common": {
+    "home": "首頁",
+    "about": "關於我們",
+    "products": "產品",
+    "favorites": "最愛",
+    "cart": "購物車",
+    "orders": "訂單",
+    "dashboard": "儀表板"
+  },
+  "adCommon": {
+    "sales": "銷量",
+    "products": "產品",
+    "createProduct": "建立產品"
   }
 }

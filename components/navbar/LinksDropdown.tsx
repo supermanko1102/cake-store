@@ -14,9 +14,10 @@ import SignOutLink from "./SignOutLink";
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { useTranslations } from "next-intl";
+import { LocaleLink } from "./LocalLink";
 
 function LinksDropdown() {
-  const t = useTranslations("account");
+  const t = useTranslations("");
   const { userId } = auth();
   const isAdmin = userId === process.env.ADMIN_USER_ID;
   return (
@@ -31,24 +32,26 @@ function LinksDropdown() {
         <SignedOut>
           <DropdownMenuItem>
             <SignInButton mode="modal">
-              <button className="w-full text-left">{t("login")}</button>
+              <button className="w-full text-left">{t("account.login")}</button>
             </SignInButton>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignUpButton mode="modal">
-              <button className="w-full text-left">{t("register")}</button>
+              <button className="w-full text-left">
+                {t("account.register")}
+              </button>
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
         <SignedIn>
           {links.map((link) => {
-            if (link.label === "儀表板" && !isAdmin) return null;
+            if (link.labelKey === "common.dashboard" && !isAdmin) return null;
             return (
               <DropdownMenuItem key={link.href}>
-                <Link href={link.href} className="capitalize w-full">
-                  {link.label}
-                </Link>
+                <LocaleLink href={link.href} className="capitalize w-full">
+                  {t(link.labelKey)}
+                </LocaleLink>
               </DropdownMenuItem>
             );
           })}

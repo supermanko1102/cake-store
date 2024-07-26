@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Providers from "./providers";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh-Hant" }];
@@ -27,10 +28,12 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <Providers>
-        <Navbar />
-        <Container className="p-20">{children}</Container>
-      </Providers>
+      <ClerkProvider>
+        <Providers>
+          <Navbar />
+          <Container className="p-20">{children}</Container>
+        </Providers>
+      </ClerkProvider>
     </NextIntlClientProvider>
   );
 }

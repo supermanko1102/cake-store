@@ -1,21 +1,34 @@
-import { useTranslations } from "next-intl";
-
 type NavLink = {
   href: string;
-  label: string;
+  labelKey: string;
 };
+
 export const links: NavLink[] = [
-  { href: "/", label: "首頁" },
-  { href: "/about", label: "關於" },
-  { href: "/products", label: "產品" },
-  { href: "/favorites", label: "最愛" },
-  { href: "/cart", label: "購物車" },
-  { href: "/orders", label: "訂單" },
-  { href: "/admin/sales", label: "儀表板" },
+  { href: "/", labelKey: "common.home" },
+  { href: "/about", labelKey: "common.about" },
+  { href: "/products", labelKey: "common.products" },
+  { href: "/favorites", labelKey: "common.favorites" },
+  { href: "/cart", labelKey: "common.cart" },
+  { href: "/orders", labelKey: "common.orders" },
+  { href: "/admin/sales", labelKey: "common.dashboard" },
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "銷售" },
-  { href: "/admin/products", label: "產品" },
-  { href: "/admin/products/create", label: "建立產品" },
+  { href: "/admin/sales", labelKey: "adCommon.sales" },
+  { href: "/admin/products", labelKey: "adCommon.products" },
+  { href: "/admin/products/create", labelKey: "adCommon.createProduct" },
 ];
+
+export const getLocalizedLinks = (locale: string): NavLink[] => {
+  return links.map((link) => ({
+    ...link,
+    href: `/${locale}${link.href}`,
+  }));
+};
+
+export const getLocalizedAdminLinks = (locale: string): NavLink[] => {
+  return adminLinks.map((link) => ({
+    ...link,
+    href: `/${locale}${link.href}`,
+  }));
+};

@@ -1,4 +1,5 @@
 "use client";
+
 import { HiTranslate } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,19 +9,37 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+type Language = "en" | "zh-Hant";
 
 function Translate() {
   const t = useTranslations("language");
-  const locale = useLocale();
+  const locale = useLocale() as Language;
   const router = useRouter();
   const pathname = usePathname();
 
-  const changeLanguage = (newLocale: string) => {
-    // 移除當前語言前綴
-    const newPathname = pathname.replace(`/${locale}`, "");
+  useEffect(() => {
+    // 在組件加載時檢查並更新 URL
+    if (!pathname.startsWith(`/${locale}`)) {
+      router.push(`/${locale}${pathname}`);
+    }
+  }, [pathname, locale, router]);
+
+  const changeLanguage = (newLocale: Language) => {
+    if (newLocale === locale) return;
+
     // 構建新的 URL
-    router.push(`/${newLocale}${newPathname}`);
+    let newPathname = pathname;
+    if (pathname.startsWith(`/${locale}`)) {
+      newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    } else {
+      newPathname = `/${newLocale}${pathname}`;
+    }
+
+    // 使用 router.push 更改語言，同時保持當前路徑
+    router.push(newPathname);
   };
 
   return (
@@ -32,11 +51,11 @@ function Translate() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => changeLanguage("en")}>
-          {t("english")}
-        </DropdownMenuItem>
         <DropdownMenuItem onClick={() => changeLanguage("zh-Hant")}>
           {t("chinese")}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLanguage("en")}>
+          {t("english")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
