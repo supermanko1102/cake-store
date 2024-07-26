@@ -7,8 +7,13 @@ import PriceInput from "@/components/form/PriceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { faker } from "@faker-js/faker";
 import CheckboxInput from "@/components/form/CheckboxInput";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-function CreateProduct() {
+type Props = {
+  params: { locale: string };
+};
+function CreateProduct({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const name = faker.commerce.productName();
   const company = faker.company.name();
   // const description = faker.commerce.productDescription();

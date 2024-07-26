@@ -1,7 +1,7 @@
 import EmptyList from "@/components/global/EmptyList";
 import { fetchAdminProducts } from "@/utils/actions";
 import Link from "next/link";
-
+import { unstable_setRequestLocale } from "next-intl/server";
 import { formatCurrency } from "@/utils/format";
 import FormContainer from "@/components/form/FormContainer";
 import { IconButton } from "@/components/form/Buttons";
@@ -15,8 +15,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-async function ItemsPage() {
+type Props = {
+  params: { locale: string };
+};
+async function ItemsPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const items = await fetchAdminProducts();
   if (items.length === 0) return <EmptyList />;
   return (
@@ -73,4 +76,7 @@ function DeleteProduct({ productId }: { productId: string }) {
       <IconButton actionType="delete" />
     </FormContainer>
   );
+}
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "zh-Hant" }];
 }
