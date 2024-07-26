@@ -4,6 +4,7 @@ import Providers from "./providers";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { ClerkProvider } from "@clerk/nextjs";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh-Hant" }];
@@ -16,6 +17,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
   let messages;
   try {
     messages = (await import(`../../public/locales/${locale}/common.json`))
