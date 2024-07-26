@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fetchAllProducts } from "@/utils/actions";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 async function ProductsContainer({
   layout,
@@ -13,6 +14,7 @@ async function ProductsContainer({
   layout: string;
   search: string;
 }) {
+  const t = await getTranslations();
   const products = await fetchAllProducts({ search });
   const totalProducts = products.length;
   const searchTerm = search ? `&search=${search}` : "";
@@ -22,7 +24,7 @@ async function ProductsContainer({
       <section>
         <div className="flex justify-between items-center">
           <h4 className="font-medium text-lg">
-            {totalProducts} product{totalProducts > 1 && "s"}
+            {totalProducts} {t("common.products")}
           </h4>
           <div className="flex gap-x-4">
             <Button
@@ -50,9 +52,7 @@ async function ProductsContainer({
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
-          <h5 className="text-2xl mt-16">
-            Sorry, no products matched your search...
-          </h5>
+          <h5 className="text-2xl mt-16">{t("products.notFoundPage")}</h5>
         ) : layout === "grid" ? (
           <ProductsGrid products={products} />
         ) : (

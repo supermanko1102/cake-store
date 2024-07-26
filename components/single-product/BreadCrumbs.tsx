@@ -6,21 +6,23 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useTranslations } from "next-intl";
 
 function BreadCrumbs({ name }: { name: string }) {
+  const t = useTranslations("common");
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/" className="capitalize text-lg">
-            home
+            {t("home")}
           </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink href="/products" className="capitalize text-lg">
-            products
+            {t("products")}
           </BreadcrumbLink>
         </BreadcrumbItem>
 

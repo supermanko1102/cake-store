@@ -17,10 +17,10 @@ export const productSchema = z.object({
   description: z.string().refine(
     (description) => {
       const wordCount = description.split(" ").length;
-      return wordCount >= 10 && wordCount <= 1000;
+      return wordCount >= 1 && wordCount <= 1000;
     },
     {
-      message: "描述需要10-1000個字之間",
+      message: "描述需要1-1000個字之間",
     }
   ),
 });

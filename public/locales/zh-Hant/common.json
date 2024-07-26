@@ -1,7 +1,9 @@
 {
   "home": {
     "title": "風和ふわ家",
-    "description": "風和家 Say CheeseCake，承襲日本大阪蛋糕師傅的專業工藝，秉持著對品質與細節的執著，致力於為每一位顧客呈現最純粹的甜點美味。自創立以來，我們堅信，簡單的食材在經過精心的處理與細膩的製作後，能夠綻放出最動人的風味。"
+    "description": "風和家 Say CheeseCake，承襲日本大阪蛋糕師傅的專業工藝，秉持著對品質與細節的執著，致力於為每一位顧客呈現最純粹的甜點美味。自創立以來，我們堅信，簡單的食材在經過精心的處理與細膩的製作後，能夠綻放出最動人的風味。",
+    "ourProduct": "我們的產品",
+    "featured": "精選品項"
   },
   "navbar": {
     "home": "首頁",
@@ -16,7 +18,8 @@
   },
   "products": {
     "title": "我們的產品",
-    "addToCart": "加入購物車"
+    "addToCart": "加入購物車",
+    "notFoundPage": "抱歉，我們無法找到您尋找的物品。"
   },
   "footer": {
     "copyright": "© 2024 蛋糕店。保留所有權利。"
@@ -50,5 +53,12 @@
     "sales": "銷量",
     "products": "產品",
     "createProduct": "建立產品"
+  },
+  "adProduct": {
+    "totalItems": "總項目",
+    "itemName": "商品名稱",
+    "company": "公司",
+    "itemPrice": "金額",
+    "actions": "操作"
   }
 }

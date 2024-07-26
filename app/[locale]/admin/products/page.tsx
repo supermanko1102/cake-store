@@ -1,7 +1,8 @@
 import EmptyList from "@/components/global/EmptyList";
+
 import { fetchAdminProducts } from "@/utils/actions";
 import Link from "next/link";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { formatCurrency } from "@/utils/format";
 import FormContainer from "@/components/form/FormContainer";
 import { IconButton } from "@/components/form/Buttons";
@@ -20,20 +21,21 @@ type Props = {
 };
 async function ItemsPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
+  const t = await getTranslations("adProduct");
   const items = await fetchAdminProducts();
   if (items.length === 0) return <EmptyList />;
   return (
     <section>
       <Table>
         <TableCaption className="capitalize">
-          商品數量 : {items.length}
+          {t("totalItems")}: {items.length}
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>商品名稱</TableHead>
-            <TableHead>公司</TableHead>
-            <TableHead>金額</TableHead>
-            <TableHead>活動</TableHead>
+            <TableHead>{t("totalItems")}</TableHead>
+            <TableHead>{t("company")}</TableHead>
+            <TableHead>{t("itemPrice")}</TableHead>
+            <TableHead>{t("actions")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

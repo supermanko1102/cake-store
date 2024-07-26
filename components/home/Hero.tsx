@@ -15,7 +15,7 @@ function Hero() {
           {t("description")}
         </p>
         <Button asChild size="lg" className="mt-10">
-          <Link href="/products">我們的產品</Link>
+          <Link href="/products">{t("ourProduct")}</Link>
         </Button>
       </div>
       <HeroCarousel />
