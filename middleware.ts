@@ -1,14 +1,20 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
 
 const isPublicRoute = createRouteMatcher(["/", "/products(.*)", "/about"]);
 const isAdminRoute = createRouteMatcher(["/admin(.*)"]);
 
-export default clerkMiddleware(async (auth, req) => {
-  // console.log(auth().userId);
+const intlMiddleware = createIntlMiddleware({
+  locales: ["en", "zh-Hant"],
+  defaultLocale: "zh-Hant",
+});
+
+export default clerkMiddleware((auth, req) => {
+  const response = intlMiddleware(req);
+  if (response) return response;
 
   const isAdminUser = auth().userId === process.env.ADMIN_USER_ID;
-
   if (isAdminRoute(req) && !isAdminUser) {
     return NextResponse.redirect(new URL("/", req.url));
   }
@@ -16,5 +22,5 @@ export default clerkMiddleware(async (auth, req) => {
 });
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)", "/"],
 };

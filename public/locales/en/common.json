@@ -1,0 +1,35 @@
+{
+  "home": {
+    "title": "Fūwa SayChess",
+    "description": "Fūwa House Say CheeseCake, inheriting the professional craftsmanship of Osaka pastry chefs from Japan, adheres to a dedication to quality and detail, committed to presenting the purest dessert delights for every customer. Since our establishment, we have firmly believed that simple ingredients, when meticulously processed and delicately crafted, can bloom into the most moving flavors."
+  },
+  "navbar": {
+    "home": "home",
+    "products": "products",
+    "about": "about",
+    "cart": "cart"
+  },
+  "account": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register"
+  },
+  "products": {
+    "title": "title",
+    "addToCart": "v"
+  },
+  "footer": {
+    "copyright": "copyright"
+  },
+  "theme": {
+    "toggle": "toggle",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "toggle": "toggle",
+    "english": "English",
+    "chinese": "中文"
+  }
+}

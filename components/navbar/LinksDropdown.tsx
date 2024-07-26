@@ -13,8 +13,10 @@ import UserIcon from "./UserIcon";
 import SignOutLink from "./SignOutLink";
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
+import { useTranslations } from "next-intl";
 
 function LinksDropdown() {
+  const t = useTranslations("account");
   const { userId } = auth();
   const isAdmin = userId === process.env.ADMIN_USER_ID;
   return (
@@ -29,13 +31,13 @@ function LinksDropdown() {
         <SignedOut>
           <DropdownMenuItem>
             <SignInButton mode="modal">
-              <button className="w-full text-left">登入</button>
+              <button className="w-full text-left">{t("login")}</button>
             </SignInButton>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignUpButton mode="modal">
-              <button className="w-full text-left">註冊</button>
+              <button className="w-full text-left">{t("register")}</button>
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>

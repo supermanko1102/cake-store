@@ -1,8 +1,9 @@
+import { useTranslations } from "next-intl";
+
 type NavLink = {
   href: string;
   label: string;
 };
-
 export const links: NavLink[] = [
   { href: "/", label: "首頁" },
   { href: "/about", label: "關於" },

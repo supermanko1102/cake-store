@@ -6,7 +6,9 @@ import NavSearch from "./NavSearch";
 import { Suspense } from "react";
 
 import Container from "../global/Container";
-import Translate from "./Translate";
+import dynamic from "next/dynamic";
+
+const Translate = dynamic(() => import("./Translate"), { ssr: false });
 function Navbar() {
   return (
     <nav className="border-b ">
@@ -18,7 +20,7 @@ function Navbar() {
         <div className="flex gap-4 items-center ">
           <CartButton />
           <DarkMode />
-          {/* <Translate /> */}
+          <Translate />
           <LinksDropdown />
         </div>
       </Container>
