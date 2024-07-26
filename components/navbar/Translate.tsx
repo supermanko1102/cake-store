@@ -1,5 +1,4 @@
 "use client";
-
 import { HiTranslate } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +8,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 type Language = "en" | "zh-Hant";
@@ -17,29 +15,31 @@ type Language = "en" | "zh-Hant";
 function Translate() {
   const t = useTranslations("language");
   const locale = useLocale() as Language;
-  const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     // 在組件加載時檢查並更新 URL
-    if (!pathname.startsWith(`/${locale}`)) {
-      router.push(`/${locale}${pathname}`);
+    if (typeof window !== "undefined") {
+      const pathname = window.location.pathname;
+      if (!pathname.startsWith(`/${locale}`)) {
+        window.location.replace(`/${locale}${pathname}`);
+      }
     }
-  }, [pathname, locale, router]);
+  }, [locale]);
 
   const changeLanguage = (newLocale: Language) => {
     if (newLocale === locale) return;
 
     // 構建新的 URL
-    let newPathname = pathname;
-    if (pathname.startsWith(`/${locale}`)) {
-      newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    const currentPath = window.location.pathname;
+    let newPath = currentPath;
+    if (currentPath.startsWith(`/${locale}`)) {
+      newPath = currentPath.replace(`/${locale}`, `/${newLocale}`);
     } else {
-      newPathname = `/${newLocale}${pathname}`;
+      newPath = `/${newLocale}${currentPath}`;
     }
 
-    // 使用 router.push 更改語言，同時保持當前路徑
-    router.push(newPathname);
+    // 使用 window.location 更改語言，同時保持當前路徑
+    window.location.href = newPath;
   };
 
   return (
